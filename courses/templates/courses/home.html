@@ -11,6 +11,16 @@
   </div>
 </div>
 <div class="site-container">
+  <h2>Subjects</h2>
+  <ul class="card-deck">
+    {% for subject in subjects %}
+    <li class="card subject-card">
+      <a class="subject-card-link" href="{% url 'courses:subject_detail' subject_slug=subject.slug %}">
+        {{ subject.name }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
   <h2>Latest Courses</h2>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
     <ol class="carousel-indicators">

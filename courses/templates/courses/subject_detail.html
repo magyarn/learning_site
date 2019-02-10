@@ -1,0 +1,15 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="site-container">
+  <h1>{{ subject.name }}</h1>
+  <p>{{ subject.description }}</p>
+  <ul>
+    {% for course in courses %}
+    <li>{{ course.title }}</li>
+    {% empty %}
+    <li>Courses coming soon!</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock content %}

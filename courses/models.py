@@ -11,13 +11,21 @@ STATUS_CHOICES = (
     ('p', 'Published'),
 )
 
+class Subject(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    slug = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.name
+
 # Create your models here.
 class Course(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
     teacher = models.ForeignKey(User, on_delete=models.CASCADE)
-    subject = models.CharField(default='', max_length=100)
+    subject = models.ForeignKey(Subject, related_name='courses', on_delete=models.CASCADE)
     published = models.BooleanField(default=False)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='i')
 
