@@ -1,5 +1,4 @@
 {% extends './base.html' %}
-{% load humanize %}
 {% load course_extras %}
 
 {% block content %}
@@ -8,26 +7,7 @@
     <p>Don't miss our latest course: <em>{% newest_course %}</em></p>
   </section> -->
   <div class="container">
-    <ul class="row card-deck">
-      {% for course in courses %}
-      <li class="card col-md-4 mb-4 shadow-sm">
-        <a href="{% url 'courses:detail' pk=course.pk %}">
-          <div class="card-body">
-            <h2 class="card-title">{{ course.title }}</h2>
-            <div class="card-text">
-              <p>Steps: {{ course.step_set.count }}</p>
-              <p>Created: {{ course.created_at|naturalday|title }}</p>
-              {% if course.description|wordcount > 5 %}
-                <p>{{ course.description|truncatewords:5 }}</p>
-              {% else %}
-                <p>{{ course.description }}</p>
-              {% endif %}
-            </div>
-          </div>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
+    {% include './includes/course_card_grid.html' %}
   </div>
   {% if user.is_authenticated %}
   <hr>
