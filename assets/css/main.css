@@ -31,8 +31,8 @@ main {
 }
 
 .card-deck .card {
-  flex: 1 0 290px;
-  max-width: 290px;
+  flex: 1 0 246px;
+  max-width: 246px;
 }
 
 .card-deck .card.subject-card {

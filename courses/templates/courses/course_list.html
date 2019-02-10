@@ -6,7 +6,8 @@
   <!-- <section class="container-fluid">
     <p>Don't miss our latest course: <em>{% newest_course %}</em></p>
   </section> -->
-  <div class="container">
+  <div class="site-container">
+    <h1 class="my-5">Courses</h1>
     {% include './includes/course_card_grid.html' %}
   </div>
   {% if user.is_authenticated %}
