@@ -8,6 +8,7 @@ app_name='courses'
 urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name="home"),
     url(r'^courses/$', views.CourseListView.as_view(), name="list"),
+    url(r'^subject/(?P<subject_slug>\w+)/$', views.SubjectDetailView.as_view(), name="subject_detail"),
     url(r'^suggest/$', views.suggestion_view, name="suggestion_form"),
     url(r'(?P<course_pk>\d+)/text-step/(?P<pk>\d+)/delete/$', views.TextDeleteView.as_view(), name="delete_text"),
     url(r'(?P<course_pk>\d+)/text-step/(?P<pk>\d+)/$', views.TextDetailView.as_view(), name="text_detail"),

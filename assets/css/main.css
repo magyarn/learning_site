@@ -34,3 +34,16 @@ main {
   flex: 1 0 290px;
   max-width: 290px;
 }
+
+.card-deck .card.subject-card {
+  flex: 1 0 20%;
+  height: 50px;
+}
+
+.subject-card-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}

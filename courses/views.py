@@ -32,6 +32,20 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['latest_courses'] = models.Course.objects.all()[:5]
+        context['subjects'] = models.Subject.objects.all()
+        return context
+
+class SubjectDetailView(ListView):
+    context_object_name = 'courses'
+    template_name = 'courses/subject_detail.html'
+
+    def get_queryset(self):
+        subject = get_object_or_404(models.Subject, slug=self.kwargs.get('subject_slug'))
+        return models.Course.objects.filter(subject=subject)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['subject'] = get_object_or_404(models.Subject, slug=self.kwargs.get('subject_slug'))
         return context
 
 
