@@ -1,0 +1,44 @@
+{% extends './base.html' %}
+
+{% block content %}
+  <div class="site-container">
+    <h1>{{form.instance.prompt|default:"New Question"}}</h1>
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      {{ formset.management_form }}
+
+      <table role="grid" style="width: 100%">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 10%">Order</th>
+            <th scope="col">Text</th>
+            <th scope="col" style="width: 10%">Correct</th>
+            <th scope="col" style="width: 10%">Delete?</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for form in formset %}
+            <tr>
+              <td>{{ form.id }} {{ form.order }}</td>
+              <td>{{ form.text }}</td>
+              <td>{{ form.correct }}</td>
+              {% if form.instance.pk %}
+                <td>{{ form.DELETE }}</td>
+              {% else %}
+                <td></td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <input type="submit" value="Save">
+    </form>
+    {% if user.is_authenticated and form.instance.pk %}
+    <hr>
+    <a href="{% url 'courses:create_answer' question_pk=form.instance.pk %}">Add Answer</a>
+    {% endif %}
+  </div>
+{% endblock content %}

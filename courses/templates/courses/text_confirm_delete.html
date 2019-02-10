@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="site-container">
+  <h1>Delete {{ step.title }} from {{ step.course.title }}?</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+    <a href="{% url 'courses:detail' pk=course.pk %}">Cancel</a>
+  </form>
+</div>
+{% endblock content%}

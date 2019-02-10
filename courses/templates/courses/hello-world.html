@@ -1,0 +1,10 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="site-container">
+  <h1>Hello world!!</h1>
+  <p>
+    {{ courses_live }} course{{ courses_live|pluralize }} {{ courses_live|pluralize:"is,are" }} live
+  </p>
+</div>
+{% endblock content %}

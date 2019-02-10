@@ -1,0 +1,49 @@
+{% extends './base.html' %}
+{% load course_extras %}
+
+{% block breadcrumbs %}
+<p>
+  <a href="{% url 'courses:list' %}">Courses</a> / {{ course.title }}
+</p>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="site-container">
+  {{ block.super }}
+  <h1>{{ course.title }}</h1>
+  <p>Instructor: {{ course.teacher }}</p>
+  <p>{{ course.description|markdown_to_html }}</p>
+  <h2>Steps:</h2>
+  {% if steps %}
+  <ol>
+    {% for step in steps %}
+    <li>
+      <a href="{{ step.get_absolute_url }}"><h3>{{ step.title }}</h3></a>
+      <p>{{ step.description }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+  {% else %}
+  <p>No steps to follow just yet.</p>
+  {% endif %}
+  {% if course.reviews %}
+  <h2>Reviews</h2>
+  <ul>
+    {% for review in course.reviews.all %}
+    <li>
+      <p>{{ review.reviewer }}</p>
+      <p>{{ review.rating}} </p>
+      <p>{{ review.comment }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% if user.is_authenticated and user == course.teacher %}
+    <hr>
+    <a href="{% url 'courses:edit_course' pk=course.id %}">Edit Course</a>
+    <a href="{% url 'courses:create_quiz' course_pk=course.id %}">New Quiz</a>
+    <a href="{% url 'courses:create_text' course_pk=course.id %}">New Text Step</a>
+    <a href="{% url 'courses:delete_course' pk=course.id %}">Delete Course</a>
+  {% endif %}
+</div>
+{% endblock content %}

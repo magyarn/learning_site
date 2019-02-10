@@ -1,0 +1,36 @@
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  transition: all .3s ease;
+}
+
+a:hover {
+  color: blue;
+}
+
+main {
+  padding-top: 50px;
+}
+
+.site-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.site-card {
+  height: 260px;
+}
+
+.card-deck .card {
+  flex: 1 0 290px;
+  max-width: 290px;
+}

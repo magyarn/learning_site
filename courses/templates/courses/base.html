@@ -1,0 +1,49 @@
+{% load static from staticfiles %}
+{% load course_extras %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,400,800" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  </head>
+  <body>
+    <header>
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      <nav class="container-fluid fixed-top navbar navbar-expand-lg navbar-dark bg-primary d-flex">
+        <a href="{% url 'courses:home' %}" class="navbar-brand">The Learning Site</a></div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item"><a class="nav-link active" href="{% url 'courses:list'%}">Courses</a></li>
+          </ul>
+          {% if user.is_authenticated %}
+          <div><a href="{% url 'courses:my_courses' userId=user.id %}">My Courses</a></div>
+          {% endif %}
+          <form action="{% url 'courses:search_results' %}" class="site-search form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" name="q">
+            <input class="btn btn-outline-light my-2 my-sm-0" type="Submit" value="Search">
+          </form>
+        </div>
+      </nav>
+    </header>
+    <main role="main" id="main">
+      {% block content %}
+        {% block breadcrumbs %}{% endblock breadcrumbs %}
+      {% endblock content %}
+    </main>
+    <script src="{% static 'js/vendor/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.formset.js' %}"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+  </body>
+</html>

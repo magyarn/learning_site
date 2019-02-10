@@ -1,0 +1,21 @@
+{% extends './base.html' %}
+
+{% block breadcrumbs %}
+<p>
+  <a href="{% url 'courses:list' %}">Courses</a> /
+  <a href="{% url 'courses:detail' course_pk=course.pk %}">{{course.title}}</a> /
+  {{form.instance.title|default:"Make a New Quiz"}}
+</p>
+{% endblock breadcrumbs %}
+
+{% block content %}
+  <div class="site-container">
+    {{ block.super }}
+    <h1>{{form.instance.title|default:"Make a New Quiz"}}</h1>
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Save">
+    </form>
+  </div>
+{% endblock content %}

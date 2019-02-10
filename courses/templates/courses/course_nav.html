@@ -1,0 +1,5 @@
+{% for course in courses %}
+<li class="site-nav__dropdown__item">
+  <a href="{% url 'courses:detail' pk=course.id %}">{{ course.title }}</a>
+</li>
+{% endfor %}

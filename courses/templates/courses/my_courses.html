@@ -1,0 +1,29 @@
+{% extends './base.html' %}
+{% load humanize %}
+{% load course_extras %}
+
+{% block content %}
+<div class="site-container">
+  <h1>My Courses</h1>
+  <ul>
+    {% for course in courses %}
+    <li>
+      <h2><a href="{% url 'courses:detail' pk=course.pk %}">{{ course.title }}</a></h2>
+      <p>by: {{ course.teacher }}</p>
+      <p>Steps: {{ course.step_set.count }}</p>
+      <p>Created: {{ course.created_at|naturalday|title }}</p>
+      {% if course.description|wordcount > 5 %}
+        <p>{{ course.description|truncatewords:5 }}</p>
+      {% else %}
+        <p>{{ course.description }}</p>
+      {% endif %}
+      <p>Status: {{ course.get_status_display }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  {% if user.is_authenticated %}
+  <hr>
+  <a href="{% url 'courses:create_course' %}">Add New Course</a>
+  {% endif %}
+</div>
+{% endblock content %}

@@ -1,0 +1,26 @@
+#preview {
+  border: 1px solid darkgray;
+  border-radius: 3px;
+  margin: 1em 0 1em 13em;
+  background-color: #f8f8f8;
+  min-height: 100px;
+  padding: 10px;
+  max-width: 46.4em;
+}
+#preview h1, h2, h3, h4, h5, h6, p {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+@media (max-width: 1024px) {
+  #preview {
+    max-width: 497px;
+  }
+}
+@media (max-width: 767px) {
+  #preview {
+    max-width: 100%;
+    margin-left: 0;
+  }
+}

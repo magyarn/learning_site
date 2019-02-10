@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+{% load course_extras %}
+
+{% block breadcrumbs %}
+<p>
+  <a href="{% url 'courses:list' %}">Courses</a> /
+  <a href="{% url 'courses:detail' pk=step.course.pk %}">{{ step.course.title }}</a> /
+  {{ step.title }}
+</p>
+{% endblock breadcrumbs %}
+
+{% block content %}
+  <div class="site-container">
+    {{ block.super }}
+    <h1>{{ step.title }}</h1>
+    <p>Text detail</p>
+    <p>{{ step.description }}</p>
+    <p>Time: {{ step.content|wordcount|time_estimate }} minute{{ step.content|wordcount|pluralize }}</p>
+    <p>{{step.content|linebreaks }}</p>
+    {% if user.is_authenticated %}
+      <hr>
+      <a href="{% url 'courses:edit_text' course_pk=step.course.pk pk=step.pk %}">Edit Text Step</a>
+      <hr>
+      <a href="{% url 'courses:delete_text' course_pk=step.course.pk pk=step.pk %}">Delete</a>
+    {% endif %}
+  </div>
+{% endblock content %}
