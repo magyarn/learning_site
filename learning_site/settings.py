@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'debug_toolbar',
     'rest_framework',
+    'accounts',
     'courses',
 ]
 
@@ -144,3 +145,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     )
 }
+
+LOGIN_REDIRECT_URL = "courses:list"
