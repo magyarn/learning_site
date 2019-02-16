@@ -21,7 +21,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     url('', include('courses.urls', namespace='courses')),
     url('^accounts/', include('accounts.urls', namespace='accounts')),
-    url('^accounts/', include('django.contrib.auth.urls')),
     url('admin/', admin.site.urls),
     url('^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
