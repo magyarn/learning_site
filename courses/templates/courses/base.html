@@ -25,14 +25,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item"><a class="nav-link active" href="{% url 'courses:list'%}">Courses</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'courses:list'%}">Courses</a></li>
             {% if user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'courses:my_courses' userId=user.id %}">
                   My Courses
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:logout'  %}">
+                  Log Out
+                </a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:login' %}">
+                  Log In
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:signup' %}">
+                  Sign Up
+                </a>
+              </li>
             {% endif %}
+
           </ul>
           <form action="{% url 'courses:search_results' %}" class="site-search form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" name="q">
