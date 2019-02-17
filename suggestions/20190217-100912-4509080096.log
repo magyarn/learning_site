@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on localhost:8000
+From: webmaster@localhost
+To: susandusher@comcast.net
+Date: Sun, 17 Feb 2019 15:09:12 -0000
+Message-ID: <155041615217.88157.533933007192637248@nathans-macbook-pro.local>
+
+
+You're receiving this email because you requested a password reset for your user account at localhost:8000.
+
+Please go to the following page and choose a new password:
+
+http://localhost:8000/accounts/reset/OA/53x-acf5b644f19e2abaaf1f/
+
+Your username, in case you've forgotten: susandush
+
+Thanks for using our site!
+
+The localhost:8000 team
+
+
+
+-------------------------------------------------------------------------------

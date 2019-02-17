@@ -19,10 +19,10 @@ from django.conf.urls import include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    url(r'^$', include('courses.urls', namespace='courses')),
-    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
-    url(r'^^accounts/', include('django.contrib.auth.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'', include('courses.urls', namespace='courses')),
+    url(r'accounts/', include('accounts.urls', namespace='accounts')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
